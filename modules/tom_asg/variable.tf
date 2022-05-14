@@ -40,3 +40,8 @@ variable "force_delete" {
   default = true
 }
 
+variable "cName" {
+  type = string
+  description = "name of resouce"
+}
+
