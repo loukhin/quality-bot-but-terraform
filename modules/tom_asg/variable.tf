@@ -19,7 +19,7 @@ variable "min" {
 }
 variable "desired" {
   type = number
-  descripton = "The number of Amazon EC2 instances that should be running in the group"
+  description = "The number of Amazon EC2 instances that should be running in the group"
 }
 
 variable "health_check" {
