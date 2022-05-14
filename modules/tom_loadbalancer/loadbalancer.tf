@@ -1,28 +1,28 @@
 resource "aws_lb" "reqLB" {
-    name = "web-elb"
+    name = "requestmusic-elb"
     load_balancer_type = "application"
-    internal = false
-    subnets = aws_subnet.PublicNets[*].id #*คือทุกตัว
-    security_groups = [aws_security_group.elb-sg.id]
+    internal = true
+    subnets = var.subnet_list #*คือทุกตัว
+    security_groups = var.sg_list
 
-    tags = #merge(local.common_tags, { Name = "${var.cName}-web-loadbalancer"})
+    tags = { Name = "${var.cName}-request-loadbalancer"}
 }
 
 resource "aws_lb_target_group" "tgp" {
   name = "tf-target-group"
   port = 80
   protocol = "HTTP"
-  vpc_id = aws_vpc.testVPC.id
+  vpc_id = var.vpc_id
 
   depends_on = [
-    aws_lb.webLB
+    aws_lb.reqLB
   ]
 
-  tags = #merge(local.common_tags, { Name = "${var.cName}-tgp"})
+  tags = { Name = "${var.cName}-tgp"}
 }
 
 resource "aws_lb_listener" "lbListener" {
-  load_balancer_arn = aws_lb.webLB.arn
+  load_balancer_arn = aws_lb.reqLB.arn
   port = 80
   protocol = "HTTP"
 
@@ -32,5 +32,5 @@ resource "aws_lb_listener" "lbListener" {
     
   }
 
-  tags = #merge(local.common_tags, { Name = "${var.cName}-listener"})
+  tags = { Name = "${var.cName}-listener"}
 }
