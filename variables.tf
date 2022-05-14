@@ -40,11 +40,21 @@ variable "subnet_count"{
 variable "pName" {
     type        = string
     description = "Common name for tagging and naming"
-    default = "Quality_Bot"    
+    default = "Quality_Bot"
 }
 
 variable "amonut_music_instance" {
   type = list(number)
   description = "value"
   default = [ 2,2,6 ]
+}
+variable "key_name" {
+    type        = string
+    description = "Private key name"
+    sensitive   = false
+}
+variable "instance_type" {
+  type        = string
+  description = "Type for EC2 Instance"
+  default     = "t2.micro"
 }
