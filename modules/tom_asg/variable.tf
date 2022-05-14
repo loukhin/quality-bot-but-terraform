@@ -1,10 +1,10 @@
 variable "launch_configuration" {
-    type = tuple(string)
+    type = map(string)
     description = "launch configuration data"
 }
 
 variable "subnet_list" {
-  type = tuple(string)
+  type = list(string)
   description = "A list of subnet IDs to launch resources in. Subnets automatically determine which availability zones the group will reside. Conflicts with"
 }
 
@@ -19,7 +19,7 @@ variable "min" {
 }
 variable "desired" {
   type = number
-  descripton = "The number of Amazon EC2 instances that should be running in the group"
+  description = "The number of Amazon EC2 instances that should be running in the group"
 }
 
 variable "health_check" {

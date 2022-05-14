@@ -1,6 +1,6 @@
 module "loadbalancer" {
-  sg_list = ""
-  subnet_list = module.vpc.subnet_list
+  source = "./modules/tom_loadbalancer "
+  subnet_list = module.vpc.pubsubnet
   vpc_id = module.vpc.Quality_VPC.id
   cName = var.pName
 }

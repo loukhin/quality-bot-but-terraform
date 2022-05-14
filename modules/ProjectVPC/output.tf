@@ -2,6 +2,6 @@ output "Quality_VPC" {
   value = aws_vpc.Quality_VPC
 }
 
-output "subnet_list" {
+output "pubsubnet" {
   value = aws_subnet.PublicNets
 }

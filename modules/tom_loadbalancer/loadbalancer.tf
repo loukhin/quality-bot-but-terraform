@@ -3,7 +3,6 @@ resource "aws_lb" "reqLB" {
     load_balancer_type = "application"
     internal = true
     subnets = var.subnet_list #*คือทุกตัว
-    security_groups = var.sg_list
 
     tags = { Name = "${var.cName}-request-loadbalancer"}
 }

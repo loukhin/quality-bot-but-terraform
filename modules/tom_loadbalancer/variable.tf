@@ -1,8 +1,4 @@
 
-variable "sg_list" {
-  type = list(string)
-  description = "list of security groups"
-}
 
 variable "subnet_list" {
   type = list(string)
