@@ -8,7 +8,7 @@ module "Manager1-asg" {
   health_check_type = "ELB"
   force_delete = true
   subnet_list = "aws_vpc.public[*]"
-
+  cName = var.pName
 }
 
 module "Manager2-asg" {
@@ -21,6 +21,7 @@ module "Manager2-asg" {
   health_check_type = "ELB"
   force_delete = true
   subnet_list = "aws_vpc.public[*]"
+  cName = var.pName
 
 }
 
@@ -34,6 +35,7 @@ module "Music-asg" {
   health_check_type = "ELB"
   force_delete = true
   subnet_list = "aws_vpc.public[*]"
+  cName = var.pName
 
 }
 
