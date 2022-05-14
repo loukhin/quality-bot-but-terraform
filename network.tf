@@ -27,7 +27,7 @@ resource "aws_security_group" "Quality-SG" {
   vpc_id = module.vpc.Quality_VPC.id
 
   #Allow all outbound
-  ingress {
+  egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -35,7 +35,7 @@ resource "aws_security_group" "Quality-SG" {
   }
 
   #Allow SSH
-  egress {
+  ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
