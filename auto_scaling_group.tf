@@ -28,13 +28,13 @@ module "Manager2-asg" {
 module "Music-asg" {
   source = "./module/tom_asg"
   launch_configuration = aws_launch_configuration#.name
-  min = 2
-  max = 6
-  desired = 2
+  min = var.amonut_music_instance[0]
+  max = var.amonut_music_instance[2]
+  desired = var.amonut_music_instance[1]
   health_check = 300
   health_check_type = "ELB"
   force_delete = true
-  subnet_list = "aws_vpc.public[*]"
+  subnet_list = module.subnet_list[*]
   cName = var.pName
 
 }
