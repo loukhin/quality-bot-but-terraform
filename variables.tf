@@ -58,3 +58,22 @@ variable "instance_type" {
   description = "Type for EC2 Instance"
   default     = "t2.micro"
 }
+variable "text_instance_count" {
+  type        = number
+  description = "Text Instance count"
+  default     = 2
+}
+variable "discord_client_id" {
+  type        = string
+  description = "Discord bot client id"
+}
+variable "discord_bot_token" {
+  type        = string
+  description = "Discord bot token"
+  sensitive   = true
+}
+variable "youtube_api_key" {
+  type        = string
+  description = "Youtube api key"
+  sensitive   = true
+}
