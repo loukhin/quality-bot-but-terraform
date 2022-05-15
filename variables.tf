@@ -40,11 +40,40 @@ variable "subnet_count"{
 variable "pName" {
     type        = string
     description = "Common name for tagging and naming"
-    default = "Quality_Bot"    
+    default = "Quality_Bot"
 }
 
 variable "amonut_music_instance" {
   type = list(number)
   description = "value"
   default = [ 2,2,6 ]
+}
+variable "key_name" {
+    type        = string
+    description = "Private key name"
+    sensitive   = false
+}
+variable "instance_type" {
+  type        = string
+  description = "Type for EC2 Instance"
+  default     = "t2.micro"
+}
+variable "text_instance_count" {
+  type        = number
+  description = "Text Instance count"
+  default     = 2
+}
+variable "discord_client_id" {
+  type        = string
+  description = "Discord bot client id"
+}
+variable "discord_bot_token" {
+  type        = string
+  description = "Discord bot token"
+  sensitive   = true
+}
+variable "youtube_api_key" {
+  type        = string
+  description = "Youtube api key"
+  sensitive   = true
 }
