@@ -61,6 +61,55 @@ resource "aws_launch_configuration" "voice_conf" {
   EOT
 }
 
+resource "aws_launch_configuration" "text_conf" {
+  count = var.text_instance_count
+
+  name          = "text_conf_${count.index+1}"
+  image_id      = data.aws_ami.aws-linux.id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+
+  user_data = <<-EOT
+  #!/bin/bash
+
+  mkdir /opt/qualitybot
+  cat > /opt/qualitybot/.env << EOF
+  NODE_ENV=development
+  PORT=3000
+
+  ELB_URL=http://localhost:3000
+  CONVERTER_FUNCTION_NAME=qb-converter
+  # ^ อันนี้ต้องรอ Lambda
+  AWS_REGION=${var.region}
+
+  AWS_ACCESS_KEY=${var.aws_access_key}
+  AWS_SECRET_KEY=${var.aws_secret_key}
+
+  DISCORD_CLIENT_ID=${var.discord_client_id}
+  DISCORD_BOT_TOKEN=${var.discord_bot_token}
+
+  YOUTUBE_API_KEY=${var.youtube_api_key}
+
+  SLASH_COMMAND_TEST_GUILD_LIST=834492419000500224, 713658288855842816, 901459733834252308, 610863827390824448
+  SHARD_COUNT=${var.text_instance_count}
+  SHARD_ID=${count.index}
+
+  DATABASE_URL=postgresql://db_username:db_password@RDS_ENDPOINT_URL:5432/quality-bot
+  # ^ อันนี้ต้องรอ RDS
+
+  # text | voice
+  INSTANCE_TYPE=text
+  EOF
+
+  sudo yum install -y docker
+  sudo service docker start
+  sudo usermod -a -G docker ec2-user
+  sudo chkconfig docker on
+  sudo docker pull ghcr.io/loukhin/quality-bot:latest
+  sudo docker run -d --name quality-bot --env-file /opt/qualitybot/.env ghcr.io/loukhin/quality-bot
+  EOT
+}
+
 ###############
 # FOR TESTING #
 ###############
