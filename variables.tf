@@ -42,3 +42,9 @@ variable "pName" {
     description = "Common name for tagging and naming"
     default = "Quality_Bot"    
 }
+
+variable "amonut_music_instance" {
+  type = list(number)
+  description = "value"
+  default = [ 2,2,6 ]
+}
