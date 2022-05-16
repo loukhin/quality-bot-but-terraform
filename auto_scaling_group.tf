@@ -9,7 +9,7 @@ module "Manager1-asg" {
   health_check_type = "ELB"
   force_delete = true
   subnet_list = module.vpc.pubsubnet
-  cName = var.pName
+  pName = var.pName
 }
 
 module "Music-asg" {
@@ -22,7 +22,7 @@ module "Music-asg" {
   health_check_type = "ELB"
   force_delete = true
   subnet_list = module.vpc.pubsubnet  
-  cName = var.pName
+  pName = var.pName
 
 }
 

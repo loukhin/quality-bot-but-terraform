@@ -40,7 +40,7 @@ variable "force_delete" {
   default = true
 }
 
-variable "cName" {
+variable "pName" {
   type = string
   description = "name of resouce"
 }

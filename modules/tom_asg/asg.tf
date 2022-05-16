@@ -12,6 +12,6 @@ resource "aws_autoscaling_group" "asg" {
     id      = var.launch_configuration.id
     version = var.launch_configuration.latest_version
   }
-  tags = { Name = "${var.cName}-asg"}
+  tags = { Name = "${var.pName}-asg"}
 }
 
