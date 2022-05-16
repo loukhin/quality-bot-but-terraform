@@ -48,6 +48,20 @@ variable "amonut_music_instance" {
   description = "value"
   default = [ 2,2,6 ]
 }
+
+
+variable "music_group_size" {
+  type = list(number)
+  description = "value"
+  default = [ 2,2,6 ]
+}
+
+variable "text_group_size" {
+  type = list(number)
+  description = "value"
+  default = [ 1,1,1 ]
+}
+
 variable "key_name" {
     type        = string
     description = "Private key name"
