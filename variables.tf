@@ -90,3 +90,9 @@ variable "password" {
   description = "password for a database."
   sensitive = true
 }
+
+//ตัวแปรในส่วนของ S3
+variable "bucket_name" {
+    type = string
+    description = "Bucket name for S3"
+}
