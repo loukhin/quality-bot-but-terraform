@@ -1,9 +1,9 @@
 module "Manager1-asg" {
   source = "./modules/tom_asg"
   launch_configuration = aws_launch_configuration.name
-  min = 1
-  max = 1
-  desired = 1
+  min = var.text_group_size[0]
+  max = var.text_group_size[2]
+  desired = var.text_group_size[1]
   health_check = 300
   health_check_type = "ELB"
   force_delete = true
@@ -14,9 +14,9 @@ module "Manager1-asg" {
 module "Manager2-asg" {
   source = "./modules/tom_asg"
   launch_configuration = aws_launch_configuration.name
-  min = 1
-  max = 1
-  desired = 1
+  min = var.text_group_size[0]
+  max = var.text_group_size[2]
+  desired = var.text_group_size[1]
   health_check = 300
   health_check_type = "ELB"
   force_delete = true
@@ -28,9 +28,9 @@ module "Manager2-asg" {
 module "Music-asg" {
   source = "./modules/tom_asg"
   launch_configuration = aws_launch_configuration.name
-  min = var.amonut_music_instance[0]
-  max = var.amonut_music_instance[2]
-  desired = var.amonut_music_instance[1]
+  min = var.music_group_size[0]
+  max = var.music_group_size[2]
+  desired = var.music_group_size[1]
   health_check = 300
   health_check_type = "ELB"
   force_delete = true
