@@ -8,13 +8,10 @@ resource "aws_autoscaling_group" "asg" {
   desired_capacity          = var.desired
   force_delete              = var.force_delete
   vpc_zone_identifier       = var.subnet_list
-  launch_template {
-    id      = var.launch_configuration.id
-    version = var.launch_configuration.latest_version
-  }
-  tag{
-    key = "Name"
-    value = "${var.pName}-${var.type_of_instance}-server"
+  launch_configuration      = var.launch_configuration_name
+  tag {
+    key                 = "Name"
+    value               = "${var.pName}-${var.type_of_instance}-server"
     propagate_at_launch = true
   }
 }

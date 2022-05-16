@@ -1,6 +1,6 @@
-variable "launch_configuration" {
-    type = map(string)
-    description = "launch configuration data"
+variable "launch_configuration_name" {
+    type = string
+    description = "launch configuration name"
 }
 
 variable "subnet_list" {
