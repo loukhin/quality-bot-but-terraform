@@ -77,6 +77,13 @@ variable "text_instance_count" {
   description = "Text Instance count"
   default     = 2
 }
+
+variable "text_asg_count" {
+  type        = number
+  description = "number of text asg groups"
+  default     = 2
+}
+
 variable "discord_client_id" {
   type        = string
   description = "Discord bot client id"
