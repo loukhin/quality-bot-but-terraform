@@ -1,4 +1,4 @@
-module "Manager1-asg" {
+module "Manager-asg" {
   source = "./modules/tom_asg"
   count = var.text_instance_count
   launch_configuration = aws_launch_configuration.manager_conf[count.index]
