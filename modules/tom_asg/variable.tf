@@ -45,3 +45,7 @@ variable "pName" {
   description = "name of resouce"
 }
 
+variable "type_of_instance" {
+  type = string
+  description = "Music or Manager"
+}

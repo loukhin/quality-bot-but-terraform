@@ -12,6 +12,10 @@ resource "aws_autoscaling_group" "asg" {
     id      = var.launch_configuration.id
     version = var.launch_configuration.latest_version
   }
-  tags = { Name = "${var.pName}-asg"}
+  tag{
+    key = "Name"
+    value = "${var.pName}-${var.type_of_instance}-server"
+    propagate_at_launch = true
+  }
 }
 

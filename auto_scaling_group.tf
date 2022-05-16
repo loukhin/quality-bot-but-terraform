@@ -1,7 +1,7 @@
 module "Manager1-asg" {
   source = "./modules/tom_asg"
   count = var.text_instance_count
-  launch_configuration = aws_launch_configuration.text_conf[count.index]
+  launch_configuration = aws_launch_configuration.manager_conf[count.index]
   min = var.text_group_size[0]
   max = var.text_group_size[2]
   desired = var.text_group_size[1]
@@ -10,6 +10,7 @@ module "Manager1-asg" {
   force_delete = true
   subnet_list = module.vpc.pubsubnet
   pName = var.pName
+  type_of_instance = "manager"
 }
 
 module "Music-asg" {
@@ -23,6 +24,6 @@ module "Music-asg" {
   force_delete = true
   subnet_list = module.vpc.pubsubnet  
   pName = var.pName
-
+  type_of_instance = "music"
 }
 

@@ -61,7 +61,7 @@ resource "aws_launch_configuration" "voice_conf" {
   EOT
 }
 
-resource "aws_launch_configuration" "text_conf" {
+resource "aws_launch_configuration" "manager_conf" {
   count = var.text_instance_count
 
   name          = "text_conf_${count.index+1}"

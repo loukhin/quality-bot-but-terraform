@@ -1,5 +1,5 @@
 module "loadbalancer" {
-  source = "./modules/tom_loadbalancer "
+  source = "./modules/tom_loadbalancer"
   subnet_list = module.vpc.pubsubnet
   vpc_id = module.vpc.Quality_VPC.id
   cName = var.pName
