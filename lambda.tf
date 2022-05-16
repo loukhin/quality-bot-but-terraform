@@ -4,10 +4,6 @@
 
 data "aws_iam_role" "labrole" {
   name = "LabRole"
-  # filter {
-  #   name   = "name"
-  #   values = ["LabRole"]
-  # }
 }
 
 ##################################################################################
