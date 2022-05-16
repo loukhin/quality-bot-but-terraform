@@ -78,8 +78,7 @@ resource "aws_launch_configuration" "manager_conf" {
   PORT=3000
 
   ELB_URL=http://localhost:3000
-  CONVERTER_FUNCTION_NAME=qb-converter
-  # ^ อันนี้ต้องรอ Lambda
+  CONVERTER_FUNCTION_NAME=${aws_lambda_function.qb-file-converter.function_name}
   AWS_REGION=${var.region}
 
   AWS_ACCESS_KEY=${var.aws_access_key}
@@ -90,7 +89,7 @@ resource "aws_launch_configuration" "manager_conf" {
 
   YOUTUBE_API_KEY=${var.youtube_api_key}
 
-  SLASH_COMMAND_TEST_GUILD_LIST=834492419000500224, 713658288855842816, 901459733834252308, 610863827390824448
+  SLASH_COMMAND_TEST_GUILD_LIST=834492419000500224, 713658288855842816, 610863827390824448
   SHARD_COUNT=${var.text_instance_count}
   SHARD_ID=${count.index}
 
