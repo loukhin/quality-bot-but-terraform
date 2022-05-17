@@ -2,7 +2,12 @@
 
 variable "subnet_list" {
   type = list(string)
-  description = "subnet use in lb"
+  description = "subnet to use in lb"
+}
+
+variable "security_group_list" {
+  type = list(string)
+  description = "security groups to use in lb"
 }
 
 variable "vpc_id" {
