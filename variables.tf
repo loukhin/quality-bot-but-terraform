@@ -108,3 +108,22 @@ variable "lambda_layer_count" {
   description = "Lambda layer count"
   default     = 2
 }
+
+//ตัวแปรในส่วนของ RDS
+variable "rds_username" {
+  type = string
+  description = "Username for a database."
+  sensitive = true
+}
+
+variable "rds_password" {
+  type = string
+  description = "password for a database."
+  sensitive = true
+}
+
+//ตัวแปรในส่วนของ S3
+variable "bucket_name" {
+    type = string
+    description = "Bucket name for S3"
+}

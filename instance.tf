@@ -109,6 +109,39 @@ resource "aws_launch_configuration" "manager_conf" {
   EOT
 }
 
+##############################
+# FOR Transfer SQL File to RDS 
+##############################
+
+resource "aws_instance" "RDS_file_transfer" {
+  ami                    = data.aws_ami.aws-linux.id
+  instance_type          = "t2.micro"
+  key_name               = var.key_name
+  
+
+  tags = { Name = "${var.pName}-EC2-RDS"}
+
+  connection {
+    type        = "ssh"
+    host        = self.public_ip
+    user        = "ec2-user"
+    private_key = file("C:/Users/Acer/Desktop/Homework/Year3_HW/NPA/Project/key.pem")
+  }
+  
+  provisioner "file" {
+    source      = "C:/Users/Acer/Desktop/Homework/Year3_HW/NPA/Project/modules/ProjectRDS/RDS_Files/quality-bot.sql"
+    destination = "/tmp/quality-bot.sql"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo yum install postgresql -y",
+      "PGPASSWORD=${module.rds.Quality_RDS.password} psql  -f /tmp/quality-bot.sql -h ${module.rds.Quality_RDS.address}  -p ${module.rds.Quality_RDS.port}  -U ${module.rds.Quality_RDS.username}  --dbname ${module.rds.Quality_RDS.db_name} "
+    ]
+  }
+}
+
+
 ###############
 # FOR TESTING #
 ###############
