@@ -32,7 +32,7 @@ resource "aws_lambda_function" "qb-file-converter" {
 
   environment {
     variables = {
-      BUCKET_NAME = "qb-test-test"
+      BUCKET_NAME = module.s3_bucket.web_bucket.id
     }
   }
 
