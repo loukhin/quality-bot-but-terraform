@@ -5,7 +5,7 @@ resource "aws_db_instance" "Quality_RDS" {
   instance_class       = "db.t3.micro"
   storage_type         = "gp2"
   publicly_accessible = true
-  db_subnet_group_name = module.vpc.subnet_list[0].id
+  db_subnet_group_name = var.subnet_group_name
   db_name              = "${var.pName}Database"
   username             = var.username
   password             = var.password

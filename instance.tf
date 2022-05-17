@@ -125,11 +125,11 @@ resource "aws_instance" "RDS_file_transfer" {
     type        = "ssh"
     host        = self.public_ip
     user        = "ec2-user"
-    private_key = file("C:/Users/Acer/Desktop/Homework/Year3_HW/NPA/Project/key.pem")
+    private_key = file(var.private_key_path)
   }
   
   provisioner "file" {
-    source      = "C:/Users/Acer/Desktop/Homework/Year3_HW/NPA/Project/modules/ProjectRDS/RDS_Files/quality-bot.sql"
+    source      = var.sql_source
     destination = "/tmp/quality-bot.sql"
   }
 

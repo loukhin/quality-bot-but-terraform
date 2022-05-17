@@ -13,3 +13,8 @@ variable "password" {
   description = "password for a database."
   
 }
+
+variable "subnet_group_name" {
+  type = string
+  description = "Subnet for Database."
+}

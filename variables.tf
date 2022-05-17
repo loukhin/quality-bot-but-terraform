@@ -127,3 +127,8 @@ variable "bucket_name" {
     type = string
     description = "Bucket name for S3"
 }
+
+variable "sql_source" {
+    type = string
+    description = "Source of SQL file."
+}
