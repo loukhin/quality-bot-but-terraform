@@ -11,6 +11,9 @@ module "Manager-asg" {
   subnet_list = module.vpc.pubsubnet[*].id
   pName = var.pName
   type_of_instance = "manager${count.index + 1}"
+  depends_on = [
+    aws_instance.RDS_file_transfer
+  ]
 }
 
 module "Music-asg" {
@@ -25,5 +28,8 @@ module "Music-asg" {
   subnet_list = module.vpc.pubsubnet[*].id
   pName = var.pName
   type_of_instance = "music"
+  depends_on = [
+    aws_instance.RDS_file_transfer
+  ]
 }
 
