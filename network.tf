@@ -36,5 +36,52 @@ resource "aws_security_group" "Quality-SG" {
   }
 
   tags = { Name = "${var.pName}-SG"}
+}
+
+resource "aws_security_group" "quality-internal-web" {
+  name   = "${var.pName}-internal-web"
+  vpc_id = module.vpc.Quality_VPC.id
+
+  #Allow all outbound
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = [var.network_address_space]
+  }
+
+  #Allow SSH
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = [var.network_address_space]
+  }
+
+  tags = { Name = "${var.pName}-internal-web"}
+
+}
+
+resource "aws_security_group" "Quality-RDS-SG" {
+  name   = "${var.pName}-RDS-SG"
+  vpc_id = module.vpc.Quality_VPC.id
+
+  #Allow all outbound
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  #Allow SSH
+  ingress {
+    from_port   = 5432
+    to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = { Name = "${var.pName}-RDS-SG"}
 
 }
