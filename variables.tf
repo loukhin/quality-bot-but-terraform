@@ -67,6 +67,11 @@ variable "key_name" {
   description = "Private key name"
   sensitive   = false
 }
+variable "private_key_path" {
+  type        = string
+  description = "Private key path"
+  sensitive   = false
+}
 variable "instance_type" {
   type        = string
   description = "Type for EC2 Instance"
@@ -111,24 +116,19 @@ variable "lambda_layer_count" {
 
 //ตัวแปรในส่วนของ RDS
 variable "rds_username" {
-  type = string
+  type        = string
   description = "Username for a database."
-  sensitive = true
+  sensitive   = true
 }
 
 variable "rds_password" {
-  type = string
+  type        = string
   description = "password for a database."
-  sensitive = true
+  sensitive   = true
 }
 
 //ตัวแปรในส่วนของ S3
 variable "bucket_name" {
-    type = string
-    description = "Bucket name for S3"
-}
-
-variable "sql_source" {
-    type = string
-    description = "Source of SQL file."
+  type        = string
+  description = "Bucket name for S3"
 }
