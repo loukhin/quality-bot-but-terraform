@@ -79,13 +79,13 @@ variable "youtube_api_key" {
 }
 
 //ตัวแปรในส่วนของ RDS
-variable "username" {
+variable "rds_username" {
   type = string
   description = "Username for a database."
   sensitive = true
 }
 
-variable "password" {
+variable "rds_password" {
   type = string
   description = "password for a database."
   sensitive = true
