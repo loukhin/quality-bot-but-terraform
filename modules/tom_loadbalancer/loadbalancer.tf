@@ -3,6 +3,7 @@ resource "aws_lb" "reqLB" {
     load_balancer_type = "application"
     internal = true
     subnets = var.subnet_list #*คือทุกตัว
+    security_groups = var.security_group_list
 
     tags = { Name = "${var.cName}-request-loadbalancer"}
 }
@@ -28,7 +29,7 @@ resource "aws_lb_listener" "lbListener" {
   default_action {
     type = "forward"
     target_group_arn = aws_lb_target_group.tgp.arn
-    
+
   }
 
   tags = { Name = "${var.cName}-listener"}
