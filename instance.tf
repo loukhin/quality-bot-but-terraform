@@ -84,6 +84,7 @@ resource "aws_launch_configuration" "manager_conf" {
 
   AWS_ACCESS_KEY=${var.aws_access_key}
   AWS_SECRET_KEY=${var.aws_secret_key}
+  AWS_SESSION_TOKEN=${var.aws_session_token}
 
   DISCORD_CLIENT_ID=${var.discord_client_id}
   DISCORD_BOT_TOKEN=${var.discord_bot_token}
